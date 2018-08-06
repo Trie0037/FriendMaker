@@ -16,24 +16,56 @@
 // Once you've found the current user's most compatible friend, display the result as a modal pop-up.
 
 // The modal should display both the name and picture of the closest match.
-var newFriends = [
-    {
-      routeName: "",
-      name: "Justin",
-      photo: "https://Profilepic.jpg",
-      scores: [
-        5,
-        1,
-        4,
-        4,
-        5,
-        1,
-        2,
-        5,
-        4,
-        1
-      ]
-    }
-  ];
-  
-  module.exports = newFriends;
+var newFriend = [{
+
+    name: "Justin",
+    photo: "",
+    scores: [
+      5,
+      1,
+      4,
+      4,
+      5,
+      1,
+      2,
+      5,
+      4,
+      1
+    ]
+  },
+  {
+    name: "Tom",
+    photo: "",
+    scores: [
+      5,
+      1,
+      4,
+      4,
+      5,
+      1,
+      2,
+      5,
+      4,
+      1
+    ]
+  },
+  {
+    name: "Tia",
+    photo: "",
+    scores: [
+      5,
+      1,
+      4,
+      4,
+      5,
+      1,
+      2,
+      5,
+      4,
+      1
+    ]
+  },
+
+];
+
+module.exports = newFriend;

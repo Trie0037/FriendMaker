@@ -20,7 +20,7 @@
                             <h4 class="panel-title">Survey Questions</h4>
                         </div>
                         <div class="panel-body">
-                            <form role="form" action="/api/surveySubmit" method="post">
+                            <form role="form" action="/api/friends" method="post">
                                 <div class="form-group">
                                     <label for="name">Name</label>
                                     <input type="text" class="form-control" id="name">
@@ -171,7 +171,7 @@
             </div>
             <footer class="footer">
                 <div class="container">
-                    <p><a href="/api/friends">API Friends List</a> | <a href="https://github.com/Trie0037/MatchMaker">GitHub Repo</a></p>
+                    <p><a href="/api/friends">API Friends List</a> | <a href="https://github.com/Trie0037/FriendMaker">GitHub Repo</a></p>
                 </div>
                 <button type="submit" class="btn btn-primary btn-lg btn-block" id="submit"><i class="fa fa-check-circle" aria-hidden="true"></i>
                     Submit</button>
@@ -223,7 +223,7 @@
             ]
         };
         console.log(newFriend);
-        $.post("/api/surveySubmit", newFriend,
+        $.post("/api/friends", newFriend,
             function(data) {
                 $("#name").text(data.name);
                 $("#photo").attr("src", data.photo);
