@@ -1,8 +1,14 @@
 {
   "name": "app.js",
   "version": "1.0.0",
-  "description": "npminstall",
+  "description": "Node.js Express friend making app",
   "main": "server.js",
+  "dependencies": {
+    "body-parser": "^1.18.3",
+    "express": "^4.16.4",
+    "parse-body": "^1.0.3",
+    "path": "^0.12.7"
+  },
   "scripts": {
     "test": "thisisatest",
     "start": "node server.js"
@@ -12,13 +18,10 @@
     "url": "mhmaker"
   },
   "keywords": [
+    "friend-maker",
+    "match-maker",
     "npm"
   ],
-  "author": "justin",
-  "license": "ISC",
-  "dependencies": {
-    "express": "^4.16.3",
-    "parse-body": "^1.0.3",
-    "path": "^0.12.7"
-  }
+  "author": "Justin Trieschmann",
+  "license": "ISC"
 }

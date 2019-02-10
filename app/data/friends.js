@@ -1,19 +1,19 @@
 var newFriend = [
   {
     name: "Justin",
-    photo: "",
+    photo: "./Profilepic.jpg",
     scores: [5, 1, 4, 4, 5, 1, 2, 5, 4, 1]
   },
 
   {
-    name: "Tom",
-    photo: "",
+    name: "JT",
+    photo: "./images/Studying.jpg",
     scores: [5, 1, 4, 4, 5, 1, 2, 5, 4, 1]
   },
 
   {
-    name: "Tia",
-    photo: "",
+    name: "Mr S.",
+    photo: "./images/MrS.jpg",
     scores: [5, 1, 4, 4, 5, 1, 2, 5, 4, 1]
   }
 ];
