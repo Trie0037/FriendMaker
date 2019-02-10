@@ -4,22 +4,22 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>MatchMaker</title>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
-    <script src="https://code.jquery.com/jquery.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/chosen/1.5.1/chosen.css">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/chosen/1.5.1/chosen.jquery.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+    <link rel="stylesheet" href="style.css">
+    
+    <title>FriendMaker</title>
 </head>
 <body>
+    <div class="container">
         <div class="row">
                 <div class="col-lg-12">
                     <div class="panel panel-default">
                         <div class="panel-heading">
-                            <h4 class="panel-title">Survey Questions</h4>
+                            <h4 class="panel-title" style="background-color: rgb(127, 127, 241);">Survey Questions</h4>
                         </div>
-                        <div class="panel-body">
+                        <div class="panel-body" style="background-color: lightgray;">
                             <form role="form" action="/api/friends" method="post">
                                 <div class="form-group">
                                     <label for="name">Name</label>
@@ -32,7 +32,7 @@
                                         <input type="text" id="photo" class="form-control" required="">
                                     </h4>
                                 </div>
-                                <div class="btn-group">
+                                <div class="btn-group" style="background-color:darkgray;">
                                     <p> Question 1 </p>
                                     <p> Your mind is always buzzing with unexplored ideas and plans. </p>
                                     <select id="q1">
@@ -168,19 +168,25 @@
                     </div>
                 </div>
             </div>
+    
+    
+            <button type="submit" class="btn btn-primary btn-lg btn-block" id="submit"><i class="fa fa-check-circle" aria-hidden="true"></i>
+                Submit</button>
+                <br>
+            
+                <footer class="footer">
+                    <p>
+                        <a href="/api/friends">API Friends List</a> | 
+                        <a href="https://github.com/Trie0037/FriendMaker">GitHub Repo</a> | 
+                        <a href="https://trie0037.github.io/Portfolio">Portfolio</a>
+                    </p>
+                </footer>
             </div>
-            <footer class="footer">
-                <div class="container">
-                    <p><a href="/api/friends">API Friends List</a> | <a href="https://github.com/Trie0037/FriendMaker">GitHub Repo</a> | <a href="https://trie0037.github.io/Portfolio">Portfolio</a></p>
-                </div>
-                <button type="submit" class="btn btn-primary btn-lg btn-block" id="submit"><i class="fa fa-check-circle" aria-hidden="true"></i>
-                    Submit</button>
-                    <hr>
-            </footer>
+    
+
             <div id="results-modal" class="modal fade" role="dialog">
                 <div class="modal-dialog">
-            
-                  <!-- Modal content-->
+                <!-- Modal content-->
                   <div class="modal-content">
                     <div class="modal-header">
                       <button type="button" class="close" data-dismiss="modal">×</button>
@@ -193,12 +199,16 @@
                     <div class="modal-footer">
                       <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
                     </div>
-                  </div>
+                </div>
             
                 </div>
-              </div>
+            </div>
+        
            
 
+            <script src="https://code.jquery.com/jquery.js"></script>
+            <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/chosen/1.5.1/chosen.jquery.min.js"></script>
               
         
 </body>

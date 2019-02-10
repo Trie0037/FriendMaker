@@ -1,4 +1,3 @@
-//Your server.js file should require the basic npm packages we've used in class: express, body-parser and path.
 // Dependencies
 // ===========================================================
 const express = require("express");
@@ -13,7 +12,6 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 //express.static Used to serve images, css files, and javascript files
 app.use(express.static('./app/public'))
-
 
 require("./app/routing/apiRoutes.js")(app);
 require("./app/routing/htmlRoutes.js")(app); //NEEDS TO BE LAST because of the wildcard
