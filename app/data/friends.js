@@ -1,7 +1,7 @@
-var friends = [
+var friendsArray = [
 	{
-		name: "Justin",
-		photo: "",
+		name: "Ariel",
+		photo: "https://lumiere-a.akamaihd.net/v1/images/gallery_princess_ariel_5_28dcc9e3.jpeg?height=473&mode=crop&region=0%2C0%2C2181%2C1223&width=63",
 		scores: [
 			"1",
 			"1",
@@ -161,4 +161,4 @@ var friends = [
 	}
 ];
 
-module.exports = friends;
+module.exports = friendsArray;

@@ -9,8 +9,6 @@
       rel="stylesheet"
       href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"
     />
-    <script src="https://code.jquery.com/jquery.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
 
     <!-- Font Awesome Glyphicons -->
     <link
@@ -184,7 +182,7 @@
         <div class="container1">
           <p>
             <a href="home.html">Home</a> |
-            <a href="/api/friends">API Friends List</a> |
+            <a href="/api/friends" target="_blank">API Friends List</a> |
             <a href="https://github.com/Trie0037/FriendMaker">GitHub Repo</a>
           </p>
         </div>
@@ -197,18 +195,16 @@
         <!-- Modal content-->
         <div class="modal-content">
           <div class="modal-header">
+            <span class="modal-title h2-custom text-center"
+              ><strong>Most Compatible with:</strong></span
+            >
             <button type="button" class="close" data-dismiss="modal">
               &times;
             </button>
-            <h2 class="modal-title"><strong>Best Match</strong></h2>
           </div>
-          <div class="modal-body">
+          <div class="modal-body text-center">
             <h2 id="match-name"></h2>
-            <img
-              id="Simba"
-              src="https://upload.wikimedia.org/wikipedia/en/thumb/c/cf/YoungSimbaSmilestlk.png/330px-YoungSimbaSmilestlk.png"
-              alt="Someone"
-            />
+            <img id="match-img" src="" alt="Someone" height="350" width="300" />
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-default" data-dismiss="modal">
@@ -219,11 +215,35 @@
       </div>
     </div>
 
-    <script type="text/javascript">
-      $(document).ready(function() {
-        $("#myModal").modal("hide");
-      });
-      // Chosen CSS
+    <script src="https://code.jquery.com/jquery.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+  </body>
+
+  <script>
+    var currentURL = window.location.origin;
+
+    // Capture the form inputs
+    $("#submit").on("click", function(event) {
+      event.preventDefault();
+
+      // Form validation
+      function validateForm() {
+        var isValid = true;
+        $(".form-control").each(function() {
+          if ($(this).val() === "") {
+            isValid = false;
+          }
+        });
+
+        $(".chosen-select").each(function() {
+          if ($(this).val() === "") {
+            isValid = false;
+          }
+        });
+        return isValid;
+      }
+
+      //Chosen CSS
       var config = {
         ".chosen-select": {},
         ".chosen-select-deselect": {
@@ -244,60 +264,48 @@
         $(selector).chosen(config[selector]);
       }
 
-      // Capture the form inputs
-      $("#submit").on("click", function(event) {
-        event.preventDefault();
+      // If all required fields are filled
+      if (validateForm()) {
+        // Create an object for the user"s friends
+        var userInput = {
+          name: $("#name").val(),
+          photo: $("#photo").val(),
+          scores: [
+            $("#q1").val(),
+            $("#q2").val(),
+            $("#q3").val(),
+            $("#q4").val(),
+            $("#q5").val(),
+            $("#q6").val(),
+            $("#q7").val(),
+            $("#q8").val(),
+            $("#q9").val(),
+            $("#q10").val()
+          ]
+        };
 
-        // Form validation
-        function validateForm() {
-          var isValid = true;
-          $(".form-control").each(function() {
-            if ($(this).val() === "") {
-              isValid = false;
-            }
+        // AJAX post the friends to the friends API.
+        $.post(currentURL + "/api/friends", userInput, function(data) {
+          // Grab the result from the AJAX post so that the best match's name and photo are displayed.
+          $("#match-name").text(data.name);
+          $("#match-img").attr("src", data.photo);
+          // Show the modal with the best match
+          $("#myModal").modal("toggle");
+          $("#name").val("");
+          $("#photo").val("");
+          $(".modal-footer").html(
+            "<h3><i class = 'fas fa-users'></i> FriendMaker</h3>"
+          );
+        });
+
+        $("#closeModal").click(function() {
+          $.get("/", function(req, res) {
+            location.replace(res);
           });
-
-          $(".chosen-select").each(function() {
-            if ($(this).val() === "") {
-              isValid = false;
-            }
-          });
-          return isValid;
-        }
-
-        // If all required fields are filled
-        if (validateForm()) {
-          // Create an object for the user"s friends
-          var userInput = {
-            name: $("#name").val(),
-            photo: $("#photo").val(),
-            scores: [
-              $("#q1").val(),
-              $("#q2").val(),
-              $("#q3").val(),
-              $("#q4").val(),
-              $("#q5").val(),
-              $("#q6").val(),
-              $("#q7").val(),
-              $("#q8").val(),
-              $("#q9").val(),
-              $("#q10").val()
-            ]
-          };
-
-          // AJAX post the friends to the friends API.
-          $.post("/api/friends", userInput).done(function(data) {
-            // Grab the result from the AJAX post so that the best match's name and photo are displayed.
-            $("#match-name").text(data.name);
-            $("#match-img").attr("src", data.photo);
-
-            // Show the modal with the best match
-            $("#myModal").modal("toggle");
-          });
-        } else {
-          alert("Please fill out all fields before submitting!");
-        }
-      });
-    </script>
-  </body>
+        });
+      } else {
+        alert("Please fill out all fields before submitting!");
+      }
+    });
+  </script>
 </html>
